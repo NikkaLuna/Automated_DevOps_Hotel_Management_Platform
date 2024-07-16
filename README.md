@@ -10,7 +10,7 @@ Infrastructure automation is achieved through Terraform for efficient AWS resour
 
 ## Screenshots
 
-![Hotel Scheduling Application](https://github.com/NikkaLuna/HotelSchedulingApplication_Java_Spring_Multithreading_with_Docker/blob/D387/Hotel%20Scheduling%20Application.png)
+![Hotel Scheduling Application](https://github.com/NikkaLuna/Automated_DevOps_Hotel_Management_Platform/blob/main/Hotel%20Scheduling%20Application.png)
 
 *This screenshot shows the main interface of the application where users can book rooms, view available rooms with prices in different currencies, and find information about a live presentation being presented at the hotel.*
 
