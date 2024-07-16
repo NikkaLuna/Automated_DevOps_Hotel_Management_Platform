@@ -6,7 +6,8 @@
 
 The Automated DevOps Hotel Management Platform is a web-based solution that leverages Java Spring Boot for the backend and Angular for the frontend. It supports multilingual capabilities (English and French), diverse currency displays, and time zone conversions for live presentations.
 
-Infrastructure automation is achieved through Terraform for efficient AWS resource provisioning. Docker is used for containerization, Ansible for deployment, and the system's performance is monitored using Prometheus and Grafana for real-time visualization and proactive incident management.
+Infrastructure automation is achieved through Terraform for efficient AWS resource provisioning. Docker is used for containerization, and Kubernetes (AWS EKS) is used for orchestration. CI/CD pipelines are implemented using Jenkins for automated deployments from version control to local environments.
+
 
 ## Screenshots
 
@@ -34,7 +35,6 @@ Infrastructure automation is achieved through Terraform for efficient AWS resour
 - **Containerization & Cloud Deployment:** Leverages Docker for containerized deployment to cloud services, enabling streamlined workflows.
 - **Infrastructure Automation:** Utilizes Terraform for provisioning AWS resources efficiently.
 - **Deployment Automation:** Employs Ansible for container orchestration and deployment.
-- **Performance Monitoring:** Configures Prometheus for gathering application metrics and Grafana for real-time visualization, enabling proactive incident and performance management.
 - **Continuous Integration & Delivery:** Leverages GitHub Actions for continuous integration and automated testing, ensuring consistent and reliable deployments.
 
 <br>
@@ -44,9 +44,8 @@ Infrastructure automation is achieved through Terraform for efficient AWS resour
 - **Frontend**: Angular
 - **Database**: MySQL, H2
 - **Infrastructure**: Terraform, AWS
-- **Containerization and Deployment**: Docker, Ansible
-- **CI/CD**: Jenkins, GitHub Actions
-- **Monitoring**: Prometheus, Grafana
+- **Containerization and Deployment**: Docker, Kubernetes
+- **CI/CD**: Jenkins
 
 <br>
 
