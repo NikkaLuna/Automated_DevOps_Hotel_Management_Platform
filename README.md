@@ -44,7 +44,7 @@ Infrastructure automation is achieved through Terraform for efficient AWS resour
 - **Frontend**: Angular
 - **Database**: MySQL, H2
 - **Infrastructure**: Terraform, AWS
-- **AWS**: VPCs, subnets, security groups, NAT gateways, EKS clusters, RDS instances, IAM roles and policies, VPC peering, and multi-AZ deployment for high availability
+- **AWS**: VPCs, subnets, security groups, NAT gateways, EKS clusters, RDS instances, IAM roles and policies, and multi-AZ deployment
 - **Containerization and Deployment**: Docker, Kubernetes
 - **CI/CD**: Jenkins
 
@@ -61,7 +61,6 @@ Infrastructure automation is achieved through Terraform for efficient AWS resour
 - MySQL
 - Docker
 - Terraform
-- Ansible
 
 
 1. **Clone the repository**:
@@ -117,20 +116,41 @@ This sequence allows you to ensure that the required AWS infrastructure is in pl
 
 ## Deployment
 
-- **Deploy with Ansible**:
-  - Run Ansible playbooks for server configuration and deployment:
-    ```bash
-    ansible-playbook -i inventory deploy.yml
+- **Deploy with Jenkins**:
+  - Use Jenkins pipelines for continuous integration and deployment. Example Jenkinsfile (this will be updated upon project completion):
+    ```groovy
+    pipeline {
+        agent any
+
+        stages {
+            stage('Build') {
+                steps {
+                    script {
+                        // Build steps
+                        sh 'mvn clean package'
+                    }
+                }
+            }
+            stage('Docker Build') {
+                steps {
+                    script {
+                        // Docker build steps
+                        sh 'docker build -t your-image-name .'
+                    }
+                }
+            }
+            stage('Deploy to Kubernetes') {
+                steps {
+                    script {
+                        // Kubernetes deployment steps
+                        sh 'kubectl apply -f k8s/deployment.yaml'
+                    }
+                }
+            }
+        }
+    }
     ```
 
-## Monitoring
-
-- **Set up Prometheus and Grafana**:
-  - Configure Prometheus to collect metrics and Grafana to visualize them:
-    ```bash
-    # Prometheus and Grafana configuration files are located in the monitoring directory
-    docker-compose -f monitoring/docker-compose.yml up -d
-    ```
 <br>
 
 ## Usage
@@ -140,8 +160,6 @@ This sequence allows you to ensure that the required AWS infrastructure is in pl
   - Frontend: `http://localhost:4200`
   - Grafana Dashboard: `http://localhost:3000`
 
-- **Monitor application performance**: Access the Grafana dashboard to view real-time metrics.
-<br>
 
 ## Challenge
 **CORS Issues**: Encountered difficulties with Cross-Origin Resource Sharing (CORS) when setting up and integrating the Angular frontend with the backend REST API, which prevented the frontend from making requests to the backend due to security restrictions.
