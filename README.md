@@ -61,6 +61,7 @@ Infrastructure automation is achieved through Terraform for efficient AWS resour
 - MySQL
 - Docker
 - Terraform
+- Jenkins
 
 
 1. **Clone the repository**:
@@ -117,38 +118,49 @@ This sequence allows you to ensure that the required AWS infrastructure is in pl
 ## Deployment
 
 - **Deploy with Jenkins**:
-  - Use Jenkins pipelines for continuous integration and deployment. Example Jenkinsfile (this will be updated upon project completion):
+  - Use Jenkins pipelines for continuous integration and deployment.
+  
+  Example Jenkinsfile (*this will be updated upon project completion*):
     ```groovy
+
     pipeline {
         agent any
 
-        stages {
-            stage('Build') {
-                steps {
-                    script {
-                        // Build steps
-                        sh 'mvn clean package'
-                    }
-                }
+    environment {
+        IMAGE_NAME = 'docker.io/your-username/my-hotel-app:latest'  // Replace with your actual image name and registry URL
+        DOCKER_USERNAME = 'your-username'
+        DOCKER_PASSWORD = 'your-password'
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'  // Build the Spring Boot application
             }
-            stage('Docker Build') {
-                steps {
-                    script {
-                        // Docker build steps
-                        sh 'docker build -t your-image-name .'
-                    }
-                }
+        }
+        stage('Docker Build') {
+            steps {
+                sh "docker build -t ${IMAGE_NAME} ."
             }
-            stage('Deploy to Kubernetes') {
-                steps {
-                    script {
-                        // Kubernetes deployment steps
-                        sh 'kubectl apply -f k8s/deployment.yaml'
-                    }
+        }
+        stage('Docker Push') {
+            steps {
+                script {    // Login to Docker Hub
+                    sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
+                    sh "docker push ${IMAGE_NAME}"
                 }
             }
         }
+        stage('Deploy to Kubernetes') {
+            steps {
+                sh 'kubectl apply -f k8s/deployment.yaml'  // Deploy to Kubernetes
+            }
+        }
     }
+}
+
+
+
     ```
 
 <br>
