@@ -157,10 +157,6 @@ This sequence allows you to ensure that the required AWS infrastructure is in pl
             }
         }
     }
-}
-
-
-
     ```
 
 <br>
