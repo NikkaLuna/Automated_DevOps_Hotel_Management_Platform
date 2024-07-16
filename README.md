@@ -16,7 +16,7 @@ Infrastructure automation is achieved through Terraform for efficient AWS resour
 
 <br>
 
-![Docker Deployment](https://github.com/NikkaLuna/HotelSchedulingApplication_Java_Spring_Multithreading_with_Docker/blob/D387/Docker%20Deployment.png)
+![Docker Deployment](https://github.com/NikkaLuna/Automated_DevOps_Hotel_Management_Platform/blob/main/Docker%20Deployment.png)
 
 *This screenshot shows the Docker Desktop interface with the running container and the Landon Hotel application accessible via `localhost:8080`. It demonstrates the containerization and deployment of the application using Docker.*
 
