@@ -35,7 +35,7 @@ Infrastructure automation is achieved through Terraform for efficient AWS resour
 - **Containerization & Cloud Deployment:** Leverages Docker for containerized deployment to cloud services, enabling streamlined workflows.
 - **Infrastructure Automation:** Utilizes Terraform for provisioning AWS resources efficiently.
 - **Deployment Automation:** Employs Ansible for container orchestration and deployment.
-- **Continuous Integration & Delivery:** Leverages GitHub Actions for continuous integration and automated testing, ensuring consistent and reliable deployments.
+- **Continuous Integration & Delivery:** Leverages Jenkins for continuous integration and automated testing, ensuring consistent and reliable deployments.
 
 <br>
 
@@ -44,6 +44,7 @@ Infrastructure automation is achieved through Terraform for efficient AWS resour
 - **Frontend**: Angular
 - **Database**: MySQL, H2
 - **Infrastructure**: Terraform, AWS
+- **AWS**: VPCs, subnets, security groups, NAT gateways, EKS clusters, RDS instances, IAM roles and policies, VPC peering, and multi-AZ deployment for high availability
 - **Containerization and Deployment**: Docker, Kubernetes
 - **CI/CD**: Jenkins
 
