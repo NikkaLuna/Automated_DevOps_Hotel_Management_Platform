@@ -6,7 +6,7 @@
 
 The Automated DevOps Hotel Management Platform is a web-based solution that leverages Java Spring Boot for the backend and Angular for the frontend. It supports multilingual capabilities (English and French), diverse currency displays, and time zone conversions for live presentations.
 
-Infrastructure automation is achieved through Terraform for efficient AWS resource provisioning. Docker is used for containerization, and Kubernetes (AWS EKS) is used for orchestration. CI/CD pipelines are implemented using Jenkins for automated deployments from version control to local environments.
+Infrastructure automation is achieved through Terraform for efficient AWS resource provisioning. Docker is used for containerization, and Kubernetes (AWS EKS) is used for orchestration. 
 
 
 ## Screenshots
@@ -34,8 +34,6 @@ Infrastructure automation is achieved through Terraform for efficient AWS resour
 - **Spring MVC REST API:** Couples JPA with Spring MVC annotations to expose REST API endpoints for effective management of hotel reservations.
 - **Containerization & Cloud Deployment:** Leverages Docker for containerized deployment to cloud services, enabling streamlined workflows.
 - **Infrastructure Automation:** Utilizes Terraform for provisioning AWS resources efficiently.
-- **Deployment Automation:** Employs Ansible for container orchestration and deployment.
-- **Continuous Integration & Delivery:** Leverages Jenkins for continuous integration and automated testing, ensuring consistent and reliable deployments.
 
 <br>
 
@@ -46,7 +44,6 @@ Infrastructure automation is achieved through Terraform for efficient AWS resour
 - **Infrastructure**: Terraform, AWS
 - **AWS**: VPCs, subnets, security groups, NAT gateways, EKS clusters, RDS instances, IAM roles and policies, and multi-AZ deployment
 - **Containerization and Deployment**: Docker, Kubernetes
-- **CI/CD**: Jenkins
 
 <br>
 
@@ -61,7 +58,6 @@ Infrastructure automation is achieved through Terraform for efficient AWS resour
 - MySQL
 - Docker
 - Terraform
-- Jenkins
 
 
 1. **Clone the repository**:
@@ -115,51 +111,6 @@ The application should now be running with the backend accessible at http://loca
 
 This sequence allows you to ensure that the required AWS infrastructure is in place before deploying your application, reducing the risk of encountering infrastructure-related issues during deployment.
 
-## Deployment
-
-- **Deploy with Jenkins**:
-  - Use Jenkins pipelines for continuous integration and deployment.
-  
-  Example Jenkinsfile (*this will be updated upon project completion*):
-    ```groovy
-
-    pipeline {
-        agent any
-
-    environment {
-        IMAGE_NAME = 'docker.io/your-username/my-hotel-app:latest'  // Replace with your actual image name and registry URL
-        DOCKER_USERNAME = 'your-username'
-        DOCKER_PASSWORD = 'your-password'
-    }
-
-    stages {
-        stage('Build') {
-            steps {
-                sh 'mvn clean package'  // Build the Spring Boot application
-            }
-        }
-        stage('Docker Build') {
-            steps {
-                sh "docker build -t ${IMAGE_NAME} ."
-            }
-        }
-        stage('Docker Push') {
-            steps {
-                script {    // Login to Docker Hub
-                    sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
-                    sh "docker push ${IMAGE_NAME}"
-                }
-            }
-        }
-        stage('Deploy to Kubernetes') {
-            steps {
-                sh 'kubectl apply -f k8s/deployment.yaml'  // Deploy to Kubernetes
-            }
-        }
-    }
-    ```
-
-<br>
 
 ## Usage
 
